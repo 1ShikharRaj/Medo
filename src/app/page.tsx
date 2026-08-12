@@ -18,10 +18,10 @@ export default async function LandingPage() {
     <div className="flex flex-col min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary">
       {/* NAVBAR */}
       <header className="px-6 py-4 flex items-center justify-between bg-white/80 backdrop-blur-md border-b sticky top-0 z-50 transition-all">
-        <div className="flex items-center gap-2">
-          <Stethoscope className="w-8 h-8 text-primary" />
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            SehatBridge<span className="text-primary font-semibold text-lg ml-0.5">AI</span>
+        <div className="flex items-center gap-1 md:gap-2">
+          <Stethoscope className="w-6 h-6 md:w-8 md:h-8 text-primary" />
+          <span className="text-lg md:text-xl font-bold tracking-tight text-foreground">
+            SehatBridge<span className="text-primary font-semibold text-base md:text-lg ml-0.5">AI</span>
           </span>
         </div>
         <nav className="hidden md:flex items-center gap-8 font-medium text-sm text-muted-foreground">
@@ -30,26 +30,28 @@ export default async function LandingPage() {
           <Link href="#rag" className="hover:text-foreground transition-colors">Clinical AI</Link>
           <Link href="#safety" className="hover:text-foreground transition-colors">Safety</Link>
         </nav>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           {!userId ? (
             <SignInButton mode="modal">
-              <Button variant="ghost" className="font-semibold">Sign In</Button>
+              <Button variant="ghost" className="font-semibold px-2 md:px-4 text-sm md:text-base">Sign In</Button>
             </SignInButton>
           ) : (
             <UserButton />
           )}
           <Link href={userId ? "/dashboard" : "/login"}>
-            <Button className="font-semibold shadow-sm">
-              {userId ? "Go to Clinic" : "Open Clinic"}
-              <ArrowRight className="ml-2 w-4 h-4" />
+            <Button className="font-semibold shadow-sm text-sm md:text-base px-3 md:px-4">
+              <span className="hidden sm:inline">{userId ? "Go to Clinic" : "Open Clinic"}</span>
+              <span className="sm:inline hidden">{userId ? "" : ""}</span>
+              <span className="sm:hidden">{userId ? "Clinic" : "Open"}</span>
+              <ArrowRight className="ml-1 md:ml-2 w-4 h-4" />
             </Button>
           </Link>
         </div>
       </header>
 
-      <main className="flex-1 flex flex-col items-center">
+      <main className="flex-1 flex flex-col items-center w-full overflow-x-hidden">
         {/* HERO */}
-        <section className="w-full py-24 md:py-32 flex flex-col items-center text-center px-6 relative overflow-hidden">
+        <section className="w-full py-16 md:py-32 flex flex-col items-center text-center px-4 md:px-6 relative overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/5 via-background to-background -z-10" />
           
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-8 border border-primary/20 shadow-sm">
@@ -57,16 +59,16 @@ export default async function LandingPage() {
             AI-Assisted Virtual Clinic for Rural Healthcare
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight max-w-5xl mb-6 text-foreground leading-[1.1]">
-            Healthcare support, <br />
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight max-w-5xl mb-6 text-foreground leading-[1.1]">
+            Healthcare support, <br className="hidden sm:block" />
             <span className="text-primary">closer to every village.</span>
           </h1>
           
-          <p className="text-xl text-muted-foreground max-w-3xl mb-10 leading-relaxed font-medium">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mb-10 leading-relaxed font-medium">
             SehatBridge AI helps trained health workers collect patient information, organize clinical cases, access relevant protocols, and connect patients with qualified remote doctors.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 mb-20 w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-4 mb-16 md:mb-20 w-full sm:w-auto">
             <Link href="/dashboard" className="w-full sm:w-auto">
               <Button size="lg" className="h-14 px-8 text-lg w-full shadow-md transition-transform hover:-translate-y-0.5">
                 Open Virtual Clinic <ArrowRight className="ml-2 w-5 h-5" />
@@ -80,9 +82,9 @@ export default async function LandingPage() {
           </div>
 
           {/* Hero Visual - Dashboard Preview */}
-          <div className="w-full max-w-6xl relative rounded-2xl border border-slate-200/60 bg-white/50 backdrop-blur-sm shadow-2xl p-2 md:p-4 rotate-[1deg] hover:rotate-0 transition-transform duration-700 ease-out">
+          <div className="w-full max-w-6xl relative rounded-2xl border border-slate-200/60 bg-white/50 backdrop-blur-sm shadow-2xl p-2 md:p-4 md:rotate-[1deg] hover:rotate-0 transition-transform duration-700 ease-out">
             <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent bottom-0 h-40 z-10 rounded-b-2xl" />
-            <div className="rounded-xl overflow-hidden border border-slate-100 bg-white shadow-inner flex flex-col md:flex-row h-[500px]">
+            <div className="rounded-xl overflow-hidden border border-slate-100 bg-white shadow-inner flex flex-col md:flex-row h-[400px] md:h-[500px]">
               {/* Fake Sidebar */}
               <div className="hidden md:flex w-64 bg-slate-50 border-r border-slate-100 p-4 flex-col gap-4">
                 <div className="h-8 bg-slate-200 rounded-md w-3/4 mb-4" />
@@ -127,7 +129,7 @@ export default async function LandingPage() {
         </section>
 
         {/* PROBLEM & SOLUTION */}
-        <section className="w-full py-24 px-6 max-w-5xl mx-auto">
+        <section className="w-full py-16 md:py-24 px-4 md:px-6 max-w-5xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Bridging the Healthcare Gap</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -180,19 +182,19 @@ export default async function LandingPage() {
             <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm relative">
                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent rounded-2xl" />
                <div className="flex flex-col gap-6 relative z-10">
-                  <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
-                     <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center"><User className="text-blue-600" /></div>
-                     <div><p className="font-semibold">Village Patient</p><p className="text-sm text-muted-foreground">Arrives at rural clinic</p></div>
+                  <div className="flex items-center gap-3 md:gap-4 bg-white p-3 md:p-4 rounded-xl shadow-sm border border-slate-100">
+                     <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full bg-blue-100 flex items-center justify-center"><User className="text-blue-600 w-5 h-5 md:w-6 md:h-6" /></div>
+                     <div><p className="font-semibold text-sm md:text-base">Village Patient</p><p className="text-xs md:text-sm text-muted-foreground">Arrives at rural clinic</p></div>
                   </div>
-                  <ArrowRight className="w-6 h-6 text-slate-300 mx-auto rotate-90" />
-                  <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-slate-100">
-                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center"><UserCheck className="text-primary" /></div>
-                     <div><p className="font-semibold">Health Worker + AI</p><p className="text-sm text-muted-foreground">Intake & case preparation</p></div>
+                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-slate-300 mx-auto rotate-90" />
+                  <div className="flex items-center gap-3 md:gap-4 bg-white p-3 md:p-4 rounded-xl shadow-sm border border-slate-100">
+                     <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full bg-primary/10 flex items-center justify-center"><UserCheck className="text-primary w-5 h-5 md:w-6 md:h-6" /></div>
+                     <div><p className="font-semibold text-sm md:text-base">Health Worker + AI</p><p className="text-xs md:text-sm text-muted-foreground">Intake & case preparation</p></div>
                   </div>
-                  <ArrowRight className="w-6 h-6 text-slate-300 mx-auto rotate-90" />
-                  <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-primary/30 ring-1 ring-primary/10">
-                     <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center"><Stethoscope className="text-emerald-700" /></div>
-                     <div><p className="font-semibold text-emerald-900">Remote Doctor</p><p className="text-sm text-emerald-700/80">Reviews & Decides</p></div>
+                  <ArrowRight className="w-5 h-5 md:w-6 md:h-6 text-slate-300 mx-auto rotate-90" />
+                  <div className="flex items-center gap-3 md:gap-4 bg-white p-3 md:p-4 rounded-xl shadow-sm border border-primary/30 ring-1 ring-primary/10">
+                     <div className="w-10 h-10 md:w-12 md:h-12 shrink-0 rounded-full bg-emerald-100 flex items-center justify-center"><Stethoscope className="text-emerald-700 w-5 h-5 md:w-6 md:h-6" /></div>
+                     <div><p className="font-semibold text-emerald-900 text-sm md:text-base">Remote Doctor</p><p className="text-xs md:text-sm text-emerald-700/80">Reviews & Decides</p></div>
                   </div>
                </div>
             </div>
@@ -200,7 +202,7 @@ export default async function LandingPage() {
         </section>
 
         {/* AI + HUMAN PHILOSOPHY */}
-        <section className="w-full py-24 bg-slate-900 text-white px-6">
+        <section className="w-full py-16 md:py-24 bg-slate-900 text-white px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl font-bold mb-10 leading-tight">AI assists. <br/><span className="text-primary">Doctors decide.</span></h2>
             <p className="text-xl text-slate-300 mb-12 text-left leading-relaxed">
@@ -240,7 +242,7 @@ export default async function LandingPage() {
         </section>
 
         {/* HOW IT WORKS / ROLES */}
-        <section id="how-it-works" className="w-full py-24 px-6 max-w-7xl mx-auto">
+        <section id="how-it-works" className="w-full py-16 md:py-24 px-4 md:px-6 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Empowering Both Sides of Care</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Dedicated tools built specifically for the needs of rural health workers and remote medical experts.</p>
@@ -282,7 +284,7 @@ export default async function LandingPage() {
         </section>
 
         {/* RAG & SAFETY */}
-        <section id="rag" className="w-full py-24 bg-slate-50 px-6">
+        <section id="rag" className="w-full py-16 md:py-24 bg-slate-50 px-4 md:px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div>
               <StatusBadge status="safe" label="Clinical Intelligence" className="mb-6 bg-primary/10 text-primary border-primary/20" />
@@ -335,7 +337,7 @@ export default async function LandingPage() {
         </section>
 
         {/* FINAL CTA */}
-        <section className="w-full py-32 bg-primary text-primary-foreground text-center px-6">
+        <section className="w-full py-20 md:py-32 bg-primary text-primary-foreground text-center px-4 md:px-6">
           <div className="max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold mb-8 leading-tight">Bring a virtual clinic closer to every community.</h2>
             <Link href="/register">
