@@ -52,6 +52,15 @@
 
 ---
 
+
+<p align="center">
+  <img
+    src="./.eraser/sehatbridge-architecture.png"
+    alt="SehatBridge AI system architecture"
+    width="100%"
+  />
+</p>
+
 # Overview
 
 Rural healthcare often faces a fundamental information gap.
